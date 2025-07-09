@@ -11,18 +11,52 @@
 
     <form id="server-form">
         <input type="hidden" id="server-id">
-        <input type="text" id="server-name" placeholder="Nombre del Servidor" required>
-        <input type="text" id="server-ip" placeholder="Dirección IP" required>
-        <input type="text" id="server-os" placeholder="Sistema Operativo" required>
+        
+        <fieldset>
+            <legend>Identificación del Servidor</legend>
+            <input type="text" id="server-hostname" placeholder="Hostname" required>
+            <input type="text" id="server-ip" placeholder="Dirección IP" required>
+            <input type="text" id="server-os" placeholder="Sistema Operativo" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Recursos de Hardware</legend>
+            <input type="number" id="server-cpu" placeholder="CPU (Cores)" required>
+            <input type="number" id="server-ram" placeholder="RAM (GB)" required>
+            <input type="number" id="server-storage" placeholder="Almacenamiento (GB)" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Información Operacional</legend>
+            <select id="server-ambiente" required>
+                <option value="Producción">Producción</option>
+                <option value="Preproducción">Preproducción</option>
+            </select>
+            <input type="text" id="server-purpose" placeholder="Propósito" required>
+            <input type="text" id="server-admin" placeholder="Administrador Responsable" required>
+            <select id="server-status" required>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+                <option value="En mantenimiento">En mantenimiento</option>
+            </select>
+        </fieldset>
+        
         <button type="submit">Guardar Servidor</button>
     </form>
 
     <table id="servers-table">
         <thead>
             <tr>
-                <th>Nombre</th>
+                <th>Hostname</th>
                 <th>IP</th>
                 <th>SO</th>
+                <th>Ambiente</th>
+                <th>Propósito</th>
+                <th>CPU</th>
+                <th>RAM</th>
+                <th>Almacenamiento</th>
+                <th>Administrador</th>
+                <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </thead>

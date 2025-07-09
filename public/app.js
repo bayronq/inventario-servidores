@@ -10,9 +10,16 @@ const getServers = async () => {
     servers.forEach(server => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${server.name}</td>
-            <td>${server.ip}</td>
-            <td>${server.os}</td>
+            <td>${server.hostname}</td>
+            <td>${server.direccion_ip}</td>
+            <td>${server.sistema_operativo}</td>
+            <td>${server.ambiente}</td>
+            <td>${server.proposito}</td>
+            <td>${server.cpu_cores}</td>
+            <td>${server.ram_gb}</td>
+            <td>${server.almacenamiento_gb}</td>
+            <td>${server.administrador_responsable}</td>
+            <td>${server.estado}</td>
             <td>
                 <button class="edit-btn" data-id="${server.id}">Editar</button>
                 <button class="delete-btn" data-id="${server.id}">Eliminar</button>
@@ -26,11 +33,18 @@ const getServers = async () => {
 serverForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const id = document.getElementById('server-id').value;
-    const name = document.getElementById('server-name').value;
-    const ip = document.getElementById('server-ip').value;
-    const os = document.getElementById('server-os').value;
-
-    const serverData = { name, ip, os };
+    const serverData = {
+        hostname: document.getElementById('server-hostname').value,
+        direccion_ip: document.getElementById('server-ip').value,
+        sistema_operativo: document.getElementById('server-os').value,
+        ambiente: document.getElementById('server-ambiente').value,
+        proposito: document.getElementById('server-purpose').value,
+        cpu_cores: parseInt(document.getElementById('server-cpu').value),
+        ram_gb: parseInt(document.getElementById('server-ram').value),
+        almacenamiento_gb: parseInt(document.getElementById('server-storage').value),
+        administrador_responsable: document.getElementById('server-admin').value,
+        estado: document.getElementById('server-status').value
+    };
 
     let response;
     if (id) {
@@ -62,9 +76,16 @@ serversList.addEventListener('click', async (e) => {
         const response = await fetch(`${apiUrl}/${id}`);
         const server = await response.json();
         document.getElementById('server-id').value = server.id;
-        document.getElementById('server-name').value = server.name;
-        document.getElementById('server-ip').value = server.ip;
-        document.getElementById('server-os').value = server.os;
+        document.getElementById('server-hostname').value = server.hostname;
+        document.getElementById('server-ip').value = server.direccion_ip;
+        document.getElementById('server-os').value = server.sistema_operativo;
+        document.getElementById('server-ambiente').value = server.ambiente;
+        document.getElementById('server-purpose').value = server.proposito;
+        document.getElementById('server-cpu').value = server.cpu_cores;
+        document.getElementById('server-ram').value = server.ram_gb;
+        document.getElementById('server-storage').value = server.almacenamiento_gb;
+        document.getElementById('server-admin').value = server.administrador_responsable;
+        document.getElementById('server-status').value = server.estado;
     }
 
     if (e.target.classList.contains('delete-btn')) {

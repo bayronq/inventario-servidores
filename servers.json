@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "id": 1752092618159,
+    "hostname": "vmgrafana",
+    "direccion_ip": "10.160.255.172",
+    "sistema_operativo": "Linux",
+    "ambiente": "Producción",
+    "proposito": "monitoreo, grafana",
+    "cpu_cores": 4,
+    "ram_gb": 12,
+    "almacenamiento_gb": 100,
+    "administrador_responsable": "admin",
+    "estado": "Activo"
+  }
+]
