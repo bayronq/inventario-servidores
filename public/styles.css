@@ -1,0 +1,49 @@
+body {
+    font-family: sans-serif;
+    margin: 2em;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin-bottom: 2em;
+    display: flex;
+    gap: 1em;
+}
+
+input {
+    padding: 0.5em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.8em;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+button {
+    cursor: pointer;
+    padding: 0.5em 1em;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-btn {
+    background-color: #008CBA;
+}
+
+.delete-btn {
+    background-color: #f44336;
+}
