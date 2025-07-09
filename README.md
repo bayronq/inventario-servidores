@@ -26,5 +26,4 @@ Cómo Ejecutar el Proyecto
 
   Verás la interfaz del inventario de servidores y podrás empezar a añadir, editar y eliminar servidores. Los datos se guardarán en el archivo servers.json.
 
-
-  Avísame si tienes alguna pregunta.
+Saludos...
