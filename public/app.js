@@ -2,7 +2,7 @@ const apiUrl = '/api/servers';
 const serverForm = document.getElementById('server-form');
 const serversList = document.getElementById('servers-list');
 const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-button');
+const clearSearchButton = document.getElementById('clear-search-button');
 
 // Función para obtener y mostrar los servidores
 const getServers = async (searchTerm = '') => {
@@ -21,9 +21,6 @@ const getServers = async (searchTerm = '') => {
             <td>${server.sistema_operativo}</td>
             <td>${server.ambiente}</td>
             <td>${server.proposito}</td>
-            <td>${server.cpu_cores}</td>
-            <td>${server.ram_gb}</td>
-            <td>${server.almacenamiento_gb}</td>
             <td>${server.administrador_responsable}</td>
             <td>${server.estado}</td>
             <td>
@@ -35,15 +32,15 @@ const getServers = async (searchTerm = '') => {
     });
 };
 
-// Manejar la búsqueda
-searchButton.addEventListener('click', () => {
+// Manejar la búsqueda interactiva
+searchInput.addEventListener('input', () => {
     getServers(searchInput.value);
 });
 
-searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        getServers(searchInput.value);
-    }
+// Manejar el botón de limpiar búsqueda
+clearSearchButton.addEventListener('click', () => {
+    searchInput.value = '';
+    getServers();
 });
 
 // Manejar el envío del formulario (Crear/Actualizar)
@@ -56,9 +53,6 @@ serverForm.addEventListener('submit', async (e) => {
         sistema_operativo: document.getElementById('server-os').value,
         ambiente: document.getElementById('server-ambiente').value,
         proposito: document.getElementById('server-purpose').value,
-        cpu_cores: parseInt(document.getElementById('server-cpu').value),
-        ram_gb: parseInt(document.getElementById('server-ram').value),
-        almacenamiento_gb: parseInt(document.getElementById('server-storage').value),
         administrador_responsable: document.getElementById('server-admin').value,
         estado: document.getElementById('server-status').value
     };
@@ -98,9 +92,6 @@ serversList.addEventListener('click', async (e) => {
         document.getElementById('server-os').value = server.sistema_operativo;
         document.getElementById('server-ambiente').value = server.ambiente;
         document.getElementById('server-purpose').value = server.proposito;
-        document.getElementById('server-cpu').value = server.cpu_cores;
-        document.getElementById('server-ram').value = server.ram_gb;
-        document.getElementById('server-storage').value = server.almacenamiento_gb;
         document.getElementById('server-admin').value = server.administrador_responsable;
         document.getElementById('server-status').value = server.estado;
     }

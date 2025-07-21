@@ -11,5 +11,31 @@
     "almacenamiento_gb": 100,
     "administrador_responsable": "admin",
     "estado": "Activo"
+  },
+  {
+    "id": 1753064174182,
+    "hostname": "linuxprod01",
+    "direccion_ip": "10.161.255.219",
+    "sistema_operativo": "Linux",
+    "ambiente": "Producción",
+    "proposito": "tomcat",
+    "cpu_cores": 0,
+    "ram_gb": 0,
+    "almacenamiento_gb": 0,
+    "administrador_responsable": "admin",
+    "estado": "Activo"
+  },
+  {
+    "id": 1753064261431,
+    "hostname": "linuxqa01",
+    "direccion_ip": "10.160.208.55",
+    "sistema_operativo": "Linux",
+    "ambiente": "Preproducción",
+    "proposito": "tomcat",
+    "cpu_cores": 0,
+    "ram_gb": 0,
+    "almacenamiento_gb": 0,
+    "administrador_responsable": "admin",
+    "estado": "Activo"
   }
 ]

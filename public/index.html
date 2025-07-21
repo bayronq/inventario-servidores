@@ -16,14 +16,11 @@
             <legend>Identificación del Servidor</legend>
             <input type="text" id="server-hostname" placeholder="Hostname" required>
             <input type="text" id="server-ip" placeholder="Dirección IP" required>
-            <input type="text" id="server-os" placeholder="Sistema Operativo" required>
-        </fieldset>
-
-        <fieldset>
-            <legend>Recursos de Hardware</legend>
-            <input type="number" id="server-cpu" placeholder="CPU (Cores)" required>
-            <input type="number" id="server-ram" placeholder="RAM (GB)" required>
-            <input type="number" id="server-storage" placeholder="Almacenamiento (GB)" required>
+            <select id="server-os" required>
+                <option value="Linux">Linux</option>
+                <option value="Windows">Windows</option>
+                <option value="AIX">AIX</option>
+            </select>
         </fieldset>
 
         <fieldset>
@@ -45,8 +42,8 @@
     </form>
 
     <div id="search-container">
-        <input type="text" id="search-input" placeholder="Buscar por IP o Hostname">
-        <button id="search-button">Buscar</button>
+        <input type="text" id="search-input" placeholder="Buscar por IP o Hostname...">
+        <button id="clear-search-button">Limpiar</button>
     </div>
 
     <table id="servers-table">
@@ -57,9 +54,6 @@
                 <th>SO</th>
                 <th>Ambiente</th>
                 <th>Propósito</th>
-                <th>CPU</th>
-                <th>RAM</th>
-                <th>Almacenamiento</th>
                 <th>Administrador</th>
                 <th>Estado</th>
                 <th>Acciones</th>
