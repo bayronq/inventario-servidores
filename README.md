@@ -1,4 +1,7 @@
-Cómo Ejecutar el Proyecto
+# INVENTARIO SERVIDORES
+[![dockeri.co](https://dockerico.blankenship.io/image/node)](https://hub.docker.com/_/node)
+
+## Cómo Ejecutar el Proyecto
 
 
   Ahora, sigue estos pasos para poner en marcha tu inventario de servidores:
@@ -20,10 +23,20 @@ Cómo Ejecutar el Proyecto
    ```npm start```
 
 
-
-
    4. Abre tu navegador y visita http://localhost:3000.
 
   Verás la interfaz del inventario de servidores y podrás empezar a añadir, editar y eliminar servidores. Los datos se guardarán en el archivo servers.json.
 
-Saludos...
+
+## Correr en Docker
+Crear Imagen
+
+```docker build -t inventario-servidores . ```
+
+Correr Contenedor
+
+```docker run -d -p 3000:3000 --name inventario-servidores inventario-servidores```
+
+
+| El proyecto corre sobre node v.24.4.1
+

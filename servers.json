@@ -37,5 +37,45 @@
     "almacenamiento_gb": 0,
     "administrador_responsable": "admin",
     "estado": "Activo"
+  },
+  {
+    "id": 1753076937938,
+    "hostname": "wasprod01",
+    "direccion_ip": "10.161.206.52",
+    "sistema_operativo": "AIX",
+    "ambiente": "Producción",
+    "proposito": "dmgr, cebs,api,bm",
+    "administrador_responsable": "usr",
+    "estado": "Activo"
+  },
+  {
+    "id": 1753076987969,
+    "hostname": "wasprod02",
+    "direccion_ip": "10.161.206.53",
+    "sistema_operativo": "AIX",
+    "ambiente": "Producción",
+    "proposito": "cebs,api",
+    "administrador_responsable": "usr",
+    "estado": "Activo"
+  },
+  {
+    "id": 1753077024461,
+    "hostname": "wasprod03",
+    "direccion_ip": "10.161.206.54",
+    "sistema_operativo": "AIX",
+    "ambiente": "Producción",
+    "proposito": "corp,api",
+    "administrador_responsable": "usr",
+    "estado": "Activo"
+  },
+  {
+    "id": 1753077064605,
+    "hostname": "wasprod04",
+    "direccion_ip": "10.161.206.55",
+    "sistema_operativo": "AIX",
+    "ambiente": "Producción",
+    "proposito": "corp,cebs,api,bm",
+    "administrador_responsable": "usr",
+    "estado": "Activo"
   }
 ]
