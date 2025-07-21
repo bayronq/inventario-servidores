@@ -1,10 +1,16 @@
 const apiUrl = '/api/servers';
 const serverForm = document.getElementById('server-form');
 const serversList = document.getElementById('servers-list');
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
 
 // Función para obtener y mostrar los servidores
-const getServers = async () => {
-    const response = await fetch(apiUrl);
+const getServers = async (searchTerm = '') => {
+    let url = apiUrl;
+    if (searchTerm) {
+        url += `?search=${searchTerm}`;
+    }
+    const response = await fetch(url);
     const servers = await response.json();
     serversList.innerHTML = '';
     servers.forEach(server => {
@@ -28,6 +34,17 @@ const getServers = async () => {
         serversList.appendChild(row);
     });
 };
+
+// Manejar la búsqueda
+searchButton.addEventListener('click', () => {
+    getServers(searchInput.value);
+});
+
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        getServers(searchInput.value);
+    }
+});
 
 // Manejar el envío del formulario (Crear/Actualizar)
 serverForm.addEventListener('submit', async (e) => {

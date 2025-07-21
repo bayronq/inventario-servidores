@@ -34,7 +34,17 @@ const writeServers = async (servers) => {
 // GET /api/servers - Obtener todos los servidores
 app.get('/api/servers', async (req, res) => {
   const servers = await readServers();
-  res.json(servers);
+  const { search } = req.query;
+
+  if (search) {
+    const filteredServers = servers.filter(s => 
+      s.hostname.toLowerCase().includes(search.toLowerCase()) ||
+      s.direccion_ip.toLowerCase().includes(search.toLowerCase())
+    );
+    res.json(filteredServers);
+  } else {
+    res.json(servers);
+  }
 });
 
 // POST /api/servers - Crear un nuevo servidor
