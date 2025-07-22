@@ -30,7 +30,7 @@ Crear Imagen
 
 Correr Contenedor
 
-`docker run -d -p 3000:3000 --mount type=bind,source=/work/volumes/is-data,target=/app --name inventario-servidores inventario-servidores`
+`docker run -d -p 3000:3000 -v /work/volumes/is-data/servers.json:/app/servers.json inventario-servidores`
 
 Asegurarse de contar con el directorio local del host de docker: /work/volumes/is-data
 

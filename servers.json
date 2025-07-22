@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": 1753146798951,
+    "hostname": "proxmox01",
+    "direccion_ip": "192.168.1.5",
+    "sistema_operativo": "Linux",
+    "ambiente": "Producción",
+    "proposito": "Proxmox",
+    "administrador_responsable": "root",
+    "estado": "Activo"
+  }
+]
