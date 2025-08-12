@@ -33,62 +33,100 @@ const writeServers = async (servers) => {
 
 // GET /api/servers - Obtener todos los servidores
 app.get('/api/servers', async (req, res) => {
-  const servers = await readServers();
-  const { search } = req.query;
+  try {
+    const servers = await readServers();
+    const { search } = req.query;
 
-  if (search) {
-    const filteredServers = servers.filter(s => 
-      s.hostname.toLowerCase().includes(search.toLowerCase()) ||
-      s.direccion_ip.toLowerCase().includes(search.toLowerCase())
-    );
-    res.json(filteredServers);
-  } else {
-    res.json(servers);
+    if (search) {
+      const filteredServers = servers.filter(s => 
+        s.hostname.toLowerCase().includes(search.toLowerCase()) ||
+        s.direccion_ip.toLowerCase().includes(search.toLowerCase())
+      );
+      res.json(filteredServers);
+    } else {
+      res.json(servers);
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error al leer los servidores' });
+  }
+});
+
+// GET /api/servers/:id - Obtener un servidor por su id
+app.get('/api/servers/:id', async (req, res) => {
+  try {
+    const servers = await readServers();
+    const serverId = parseInt(req.params.id, 10);
+    const server = servers.find(s => s.id === serverId);
+
+    if (server) {
+      res.json(server);
+    } else {
+      res.status(404).json({ message: 'Servidor no encontrado' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error al leer el servidor' });
   }
 });
 
 // POST /api/servers - Crear un nuevo servidor
 app.post('/api/servers', async (req, res) => {
-  const servers = await readServers();
-  const newServer = {
-    id: Date.now(), // ID único simple
-    ...req.body
-  };
-  servers.push(newServer);
-  await writeServers(servers);
-  res.status(201).json(newServer);
+  try {
+    const servers = await readServers();
+    const newServer = {
+      id: Date.now(), // ID único simple
+      ...req.body
+    };
+    servers.push(newServer);
+    await writeServers(servers);
+    res.status(201).json(newServer);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al crear el servidor' });
+  }
 });
 
 // PUT /api/servers/:id - Actualizar un servidor existente
 app.put('/api/servers/:id', async (req, res) => {
-  const servers = await readServers();
-  const serverId = parseInt(req.params.id, 10);
-  const serverIndex = servers.findIndex(s => s.id === serverId);
+  try {
+    const servers = await readServers();
+    const serverId = parseInt(req.params.id, 10);
+    const serverIndex = servers.findIndex(s => s.id === serverId);
 
-  if (serverIndex === -1) {
-    return res.status(404).json({ message: 'Servidor no encontrado' });
+    if (serverIndex === -1) {
+      return res.status(404).json({ message: 'Servidor no encontrado' });
+    }
+
+    const updatedServer = { ...servers[serverIndex], ...req.body };
+    servers[serverIndex] = updatedServer;
+    await writeServers(servers);
+    res.json(updatedServer);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al actualizar el servidor' });
   }
-
-  const updatedServer = { ...servers[serverIndex], ...req.body };
-  servers[serverIndex] = updatedServer;
-  await writeServers(servers);
-  res.json(updatedServer);
 });
 
 // DELETE /api/servers/:id - Eliminar un servidor
 app.delete('/api/servers/:id', async (req, res) => {
-  const servers = await readServers();
-  const serverId = parseInt(req.params.id, 10);
-  const filteredServers = servers.filter(s => s.id !== serverId);
+  try {
+    const servers = await readServers();
+    const serverId = parseInt(req.params.id, 10);
+    const filteredServers = servers.filter(s => s.id !== serverId);
 
-  if (servers.length === filteredServers.length) {
-    return res.status(404).json({ message: 'Servidor no encontrado' });
+    if (servers.length === filteredServers.length) {
+      return res.status(404).json({ message: 'Servidor no encontrado' });
+    }
+
+    await writeServers(filteredServers);
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ message: 'Error al eliminar el servidor' });
   }
-
-  await writeServers(filteredServers);
-  res.status(204).send();
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+// Iniciar el servidor solo si el script se ejecuta directamente
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;

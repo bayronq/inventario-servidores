@@ -83,9 +83,12 @@ serverForm.addEventListener('submit', async (e) => {
 // Manejar clicks en la lista (Editar/Eliminar)
 serversList.addEventListener('click', async (e) => {
     if (e.target.classList.contains('edit-btn')) {
+        console.log('Botón de editar clickeado');
         const id = e.target.dataset.id;
+        console.log('ID del servidor:', id);
         const response = await fetch(`${apiUrl}/${id}`);
         const server = await response.json();
+        console.log('Datos del servidor recibidos:', server);
         document.getElementById('server-id').value = server.id;
         document.getElementById('server-hostname').value = server.hostname;
         document.getElementById('server-ip').value = server.direccion_ip;
@@ -94,6 +97,8 @@ serversList.addEventListener('click', async (e) => {
         document.getElementById('server-purpose').value = server.proposito;
         document.getElementById('server-admin').value = server.administrador_responsable;
         document.getElementById('server-status').value = server.estado;
+        document.getElementById('server-form').scrollIntoView({ behavior: 'smooth' });
+        console.log('Formulario populado con los datos del servidor');
     }
 
     if (e.target.classList.contains('delete-btn')) {
