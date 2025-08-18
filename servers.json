@@ -2,12 +2,32 @@
   "servers": [
     {
       "id": 1,
-      "hostname": "proxmox",
+      "hostname": "pve",
       "direccion_ip": "192.168.1.5",
       "sistema_operativo": "Linux",
       "ambiente": "Producción",
-      "proposito": "PVE",
+      "proposito": "pve",
       "administrador_responsable": "root",
+      "estado": "Activo"
+    },
+    {
+      "id": 2,
+      "hostname": "vmmediaserver",
+      "direccion_ip": "192.168.1.51",
+      "sistema_operativo": "Linux",
+      "ambiente": "Producción",
+      "proposito": "docker prod",
+      "administrador_responsable": "bcua",
+      "estado": "Activo"
+    },
+    {
+      "id": 3,
+      "hostname": "vmdocker01",
+      "direccion_ip": "192.168.1.50",
+      "sistema_operativo": "Linux",
+      "ambiente": "Producción",
+      "proposito": "docker prod",
+      "administrador_responsable": "bcua",
       "estado": "Activo"
     }
   ]

@@ -13,10 +13,9 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^5.1.0",
+    "express": "~4.19.2",
     "glob": "^11.0.3",
-    "lowdb": "^7.0.1",
-    "paquete": "^1.0.0"
+    "lowdb": "^7.0.1"
   },
   "devDependencies": {
     "jest": "^30.0.5",

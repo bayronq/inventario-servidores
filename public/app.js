@@ -78,6 +78,7 @@ serverForm.addEventListener('submit', async (e) => {
 
     if (response.ok) {
         serverForm.reset();
+        document.getElementById('server-id').value = '';
         getServers();
     }
 });
