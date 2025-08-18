@@ -1,49 +1,34 @@
 body {
-    font-family: sans-serif;
-    margin: 2em;
+    background-color: #f8f9fa;
 }
 
-h1 {
-    text-align: center;
+.card-header h3 {
+    margin-bottom: 0;
 }
 
-form {
-    margin-bottom: 2em;
-    display: flex;
-    gap: 1em;
+.table th, .table td {
+    vertical-align: middle;
 }
 
-input {
-    padding: 0.5em;
+.btn-group-sm > .btn {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 0.8em;
-    text-align: left;
+.form-select {
+    color: #6c757d;
 }
 
-th {
-    background-color: #f2f2f2;
+.form-select:invalid {
+    color: #6c757d;
 }
 
-button {
-    cursor: pointer;
-    padding: 0.5em 1em;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
+option[value=""][disabled] {
+    display: none;
 }
 
-.edit-btn {
-    background-color: #008CBA;
-}
-
-.delete-btn {
-    background-color: #f44336;
-}
