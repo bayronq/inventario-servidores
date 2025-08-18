@@ -4,67 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario de Servidores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Inventario de Servidores</h1>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Inventario de Servidores</h1>
 
-    <form id="server-form">
-        <input type="hidden" id="server-id">
-        
-        <fieldset>
-            <legend>Identificación del Servidor</legend>
-            <input type="text" id="server-hostname" placeholder="Hostname" required>
-            <input type="text" id="server-ip" placeholder="Dirección IP" required>
-            <select id="server-os" required>
-                <option value="Linux">Linux</option>
-                <option value="Windows">Windows</option>
-                <option value="AIX">AIX</option>
-            </select>
-        </fieldset>
-
-        <fieldset>
-            <legend>Información Operacional</legend>
-            <select id="server-ambiente" required>
-                <option value="Producción">Producción</option>
-                <option value="Preproducción">Preproducción</option>
-            </select>
-            <input type="text" id="server-purpose" placeholder="Propósito" required>
-            <input type="text" id="server-admin" placeholder="Administrador Responsable" required>
-            <select id="server-status" required>
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
-                <option value="En mantenimiento">En mantenimiento</option>
-            </select>
-        </fieldset>
-        
-        <button type="submit">Guardar Servidor</button>
-    </form>
-
-    <fieldset>
-        <legend>Buscar</legend>
-        <div id="search-container">
-            <input type="text" id="search-input" placeholder="Buscar por IP o Hostname...">
-            <button id="clear-search-button">Limpiar</button>
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>Registrar Servidor</h3>
+            </div>
+            <div class="card-body">
+                <form id="server-form">
+                    <input type="hidden" id="server-id">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="server-hostname" placeholder="Hostname" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="server-ip" placeholder="Dirección IP" required>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="server-os" class="form-select" required>
+                                <option value="">Sistema Operativo...</option>
+                                <option value="Linux">Linux</option>
+                                <option value="Windows">Windows</option>
+                                <option value="AIX">AIX</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="server-ambiente" class="form-select" required>
+                                <option value="">Ambiente...</option>
+                                <option value="Producción">Producción</option>
+                                <option value="Preproducción">Preproducción</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="server-purpose" placeholder="Propósito" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="server-admin" placeholder="Administrador" required>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="server-status" class="form-select" required>
+                                <option value="">Estado...</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                                <option value="En mantenimiento">En mantenimiento</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+                </form>
+            </div>
         </div>
-    </fieldset>
 
-    <table id="servers-table">
-        <thead>
-            <tr>
-                <th>Hostname</th>
-                <th>IP</th>
-                <th>SO</th>
-                <th>Ambiente</th>
-                <th>Propósito</th>
-                <th>Administrador</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="servers-list"></tbody>
-    </table>
+        <div class="card">
+            <div class="card-header">
+                <h3>Lista de Servidores</h3>
+            </div>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <input type="text" id="search-input" class="form-control" placeholder="Buscar por IP o Hostname...">
+                    <button id="clear-search-button" class="btn btn-outline-secondary">Limpiar</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Hostname</th>
+                                <th>IP</th>
+                                <th>SO</th>
+                                <th>Ambiente</th>
+                                <th>Propósito</th>
+                                <th>Administrador</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="servers-list"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

@@ -16,8 +16,5 @@ COPY . .
 # Expone el puerto en el que corre la aplicación
 EXPOSE 3000
 
-# Declara el volumen para el archivo de datos, que será montado en tiempo de ejecución
-VOLUME /app/servers.json
-
 # Comando para iniciar la aplicación
 CMD [ "npm", "start" ]

@@ -24,8 +24,10 @@ const getServers = async (searchTerm = '') => {
             <td>${server.administrador_responsable}</td>
             <td>${server.estado}</td>
             <td>
-                <button class="edit-btn" data-id="${server.id}">Editar</button>
-                <button class="delete-btn" data-id="${server.id}">Eliminar</button>
+                <div class="btn-group btn-group-sm" role="group">
+                    <button class="btn btn-warning edit-btn" data-id="${server.id}">Editar</button>
+                    <button class="btn btn-danger delete-btn" data-id="${server.id}">Eliminar</button>
+                </div>
             </td>
         `;
         serversList.appendChild(row);
