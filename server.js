@@ -102,7 +102,6 @@ const startServer = async () => {
   });
 };
 
-<<<<<<< HEAD
 // Función para escribir los servidores en el archivo
 const writeServers = async (servers) => {
   await fs.writeFile(DATA_FILE, JSON.stringify(servers, null, 2), 'utf8');
@@ -209,7 +208,6 @@ if (require.main === module) {
 }
 
 module.exports = app;
-=======
+
 // Arrancar el servidor
 startServer();
->>>>>>> v2
